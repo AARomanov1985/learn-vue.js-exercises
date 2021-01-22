@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<style>
+    [v-cloack]{
+        display: none;
+    }
+</style>
+
+<div id="app">
+    <div class="container">
+        <form v-show="!submitted" class="mt-5">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" v-model="email" class="form-control form-control-lg">
+            </div>
+            <!-- v-on:click.prevent-->
+            <button type="submit" @click.prevent="process" class="btn btn-primary">Submit</button>
+        </form>
+        <h2 v-show="submitted" v-cloack class="mt-5">Thanks for signing up!</h2>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            email: 'some@email.com',
+            submitted: false
+        },
+        methods: {
+            process: function (event) {
+                this.submitted = true;
+            }
+        }
+    });
+</script>
